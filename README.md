@@ -41,15 +41,15 @@ Relatório de desenvolvimento do jogo Sem Nome feito para a disciplina de Introd
 <a id="ideacao"></a>
 ## Ideação e design
 
-O processo de ideação e design em grupo para o nosso projeto de jogo teve início com ...
+O processo de ideação e design em grupo para o nosso projeto de jogo teve início com um brainstorm escrito no (whimsical)[https://whimsical.com/projeto-ip-brainstoming-23fNbDga6oa6N2Xy1pBtRL] seguido por uma votação baseada em critérios pré-definidos. O tema mais votado foi eleito como nossa ideia de jogo. Abaixo, descreveremos em detalhes as etapas desse processo.
 
-<strong>1. Passo 1</strong>
+<strong>1. Brainwriting Colaborativo</strong>
 
-Para dar início ao processo criativo ...
+Para gerar ideias e conceitos inovadores para o jogo, utilizamos uma técnica chamada "brainwriting". Cada membro da equipe recebeu um bloco de anotações virtual e teve 3 minutos para registrar suas ideias sobre o jogo. Após esse tempo, o membro do grupo passava para o bloco à direita, adicionando suas contribuições por mais 3 minutos. Esse processo continuou até que todos os membros tivessem a oportunidade de participar.
 
-<strong>2. Passo 2</strong>
+<strong>2. Votação para seleção do tema</strong>
 
-...
+Após a geração de um grande número de ideias durante o processo de brainwriting, realizamos uma votação para escolher o tema que fosse instigante, inovador, esteticamente agradável e de fácil desenvolvimento. Após uma análise criteriosa, o tema escolhido foi: "tiro ao alvo com obstáculos móveis, em que cada rodada pode incluir um dardo premium (prata, ouro ou diamante) que vale mais pontos". Esse tema oferecia desafios específicos e uma experiência de jogo que atendia aos critérios estabelecidos.
 
 <a id="bibliotecas"></a>
 ## Bibliotecas Utilizadas
