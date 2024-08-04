@@ -6,9 +6,17 @@ from jogador import Jogador
 from adversario import Adversario
 from bola import Bola
 from gol import Gol
+from mapa import *
 
 # Inicializa o pygame
 pygame.init()
+
+# Seta a tela
+# screen_size = (928, 576)
+# tela = pygame.display.set_mode(screen_size)
+
+mapa = Mapa()
+mapa.criar_mapa(mundo)
 
 def main():
     tela = pygame.display.set_mode((LARGURA_TELA, ALTURA_TELA))
