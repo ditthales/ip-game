@@ -1,4 +1,5 @@
 import pygame
+from constantes import *
 from utils import *
 from jogador import Jogador
 from adversario import Adversario
@@ -9,17 +10,14 @@ from gol import Gol
 pygame.init()
 
 def main():
-    largura_tela, altura_tela = 1280, 800
-    tela = pygame.display.set_mode((largura_tela, altura_tela))
+    tela = pygame.display.set_mode((LARGURA_TELA, ALTURA_TELA))
     pygame.display.set_caption('Jogo de Futebol')
 
-    fundo = pygame.Surface((largura_tela, altura_tela))
+    fundo = pygame.Surface((LARGURA_TELA, ALTURA_TELA))
     fundo = fundo.convert()
     fundo.fill('green')
-    scroll_fundo = altura_tela * 1.5
+    scroll_fundo = ALTURA_TELA * 1.5
 
-    velocidade = 1.5
-    fps = 100
     relogio = pygame.time.Clock()
 
     nivel = 1
@@ -38,9 +36,9 @@ def main():
                 quit()
 
         tela.blit(fundo, (0, 0))
-        scroll_fundo -= velocidade
-        if scroll_fundo <= -altura_tela:
-            scroll_fundo = altura_tela * 1.5
+        scroll_fundo -= VELOCIDADE
+        if scroll_fundo <= -ALTURA_TELA:
+            scroll_fundo = ALTURA_TELA * 1.5
 
         teclas = pygame.key.get_pressed()
         jogador.mover(teclas)
@@ -89,7 +87,7 @@ def main():
         gol.desenhar(tela)
 
         pygame.display.flip()
-        relogio.tick(fps)
+        relogio.tick(FPS)
 
         pygame.display.update()
 
