@@ -1,4 +1,5 @@
 import pygame
+import math
 from constantes import *
 from utils import *
 from jogador import Jogador
@@ -21,7 +22,6 @@ def main():
     relogio = pygame.time.Clock()
 
     nivel = 1
-    max_niveis = 10
     jogador = Jogador()
     gol = Gol()
     bolas = []
@@ -43,31 +43,33 @@ def main():
         teclas = pygame.key.get_pressed()
         jogador.mover(teclas)
 
-        if teclas[pygame.K_SPACE] and len(bolas) == 0:
-            bolas.append(Bola(jogador.rect.x, jogador.rect.y))
+        if pygame.mouse.get_pressed()[0] and len(bolas) == 0:
+            
+            mouse_pos = pygame.mouse.get_pos()
 
+            bolas.append(Bola(jogador.rect.x, jogador.rect.y, mouse_pos))
+        
         for adversario in adversarios:
             adversario.atualizar()
             adversario.desenhar(tela)
 
         for bola in bolas[:]:
-            bola.atualizar()
             bola.desenhar(tela)
-            if bola.rect.y < 0 and not gol_marcado:
+            bola_rect = bola.rect()
+            if bola.saiu_tela() and not gol_marcado:
                 bolas.remove(bola)
-                pygame.quit()
-                quit()
+                print("chutou pra fora")
             else:
                 for adversario in adversarios[:]:
-                    if bola.rect.colliderect(adversario.rect):
+                    
+                    if bola.checar_se_bateu(bola_rect, adversario.rect):
                         bolas.remove(bola)
-                        pygame.quit()
-                        quit()
-                if bola.rect.colliderect(gol.rect):
+                        print("atingiu o adversário")
+                if bola.checar_se_bateu(bola_rect, gol.rect):
                     gol_marcado = True
                     print(f"Gol! Nível {nivel} completado.")
                     nivel += 1
-                    if nivel > max_niveis:
+                    if nivel > MAX_NIVEIS:
                         print("Você venceu todos os níveis! Fim de jogo.")
                         pygame.quit()
                         quit()
