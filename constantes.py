@@ -12,7 +12,7 @@ direcoes_movimento = {
     pygame.K_RIGHT: (2, 0)
 }
 
-LARGURA_TELA, ALTURA_TELA = 1280, 800
+LARGURA_TELA, ALTURA_TELA = 928, 576
 
 FPS = 100
 

@@ -15,9 +15,8 @@ def main():
     tela = pygame.display.set_mode((LARGURA_TELA, ALTURA_TELA))
     pygame.display.set_caption('Jogo de Futebol')
 
-    fundo = pygame.Surface((LARGURA_TELA, ALTURA_TELA))
-    fundo.fill('green')
-    fundo = fundo.convert()
+    imagem_fundo = pygame.image.load('./campinho.png')
+    imagem_fundo = pygame.transform.scale(imagem_fundo, (LARGURA_TELA, ALTURA_TELA))
 
     relogio = pygame.time.Clock()
 
@@ -41,7 +40,7 @@ def main():
                 pygame.quit()
                 quit()
 
-        tela.blit(fundo, (0, 0))
+        tela.blit(imagem_fundo, (0, 0))
 
         texto_vidas = pygame.font.SysFont('arial', 16).render(f'Vidas restantes: {vidas}', True, 'white')
         texto_bolas = pygame.font.SysFont('arial', 16).render(f'Bolas restantes: {bolas_restantes}', True, 'white')
@@ -101,7 +100,7 @@ def main():
                     bolas = []
                     vidas = 3
                     gol_marcado = False
-                    jogador.rect.topleft = (450, 630)
+                    jogador = Jogador()
                     gol.rect.topleft = (400, 0)
 
         for adversario in adversarios:
