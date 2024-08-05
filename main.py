@@ -54,7 +54,7 @@ def tela_menu():
 
 def main():
     tela = pygame.display.set_mode((LARGURA_TELA, ALTURA_TELA))
-    pygame.display.set_caption('Jogo de Futebol')
+    pygame.display.set_caption('Ronaldinho Soccer')
 
     imagem_fundo = pygame.image.load('./assetsgeral/campinho.png')
     imagem_fundo = pygame.transform.scale(imagem_fundo, (LARGURA_TELA, ALTURA_TELA))
@@ -189,6 +189,7 @@ def main():
             jogador.desenhar(tela)
 
             if vidas == 0:
+                pygame.display.set_caption('Game Over')
                 imagem_fundo = pygame.image.load('./assetsgeral/game-over.png')
                 tela.fill((0, 255, 0))
                 tela.blit(imagem_fundo, (0, 0))
