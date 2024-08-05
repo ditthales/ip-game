@@ -11,6 +11,8 @@ from audio import kick_sound
 
 pygame.init()
 
+font_path = 'fontes/slkscre.ttf'
+
 def tela_menu():
     tela = pygame.display.set_mode((LARGURA_TELA, ALTURA_TELA))
     pygame.display.set_caption('Tela Inicial do Jogo')
@@ -18,7 +20,7 @@ def tela_menu():
     imagem_fundo = pygame.image.load('./tela-inicial.png')
     imagem_fundo = pygame.transform.scale(imagem_fundo, (LARGURA_TELA, ALTURA_TELA))
 
-    fonte = pygame.font.SysFont('arial', 32)
+    fonte = pygame.font.Font(font_path, 40)
     texto_botao = fonte.render("JOGAR", True, (255, 255, 255))
     botao_largura = 240
     botao_altura = 80
@@ -66,8 +68,8 @@ def main():
     bolas_restantes = 2
     convites_aceitos = 0
 
-    fonte_pequena = pygame.font.SysFont('arial', 16)
-    fonte_grande = pygame.font.SysFont('arial', 32)
+    fonte_pequena = pygame.font.Font(font_path, 16)
+    fonte_grande = pygame.font.Font(font_path, 32)
 
     adversarios = [Adversario(gerar_pontos_movimento(), circular=(i % 2 == 1)) for i in range(nivel + 3)]
     bolas_a_coletar = [Coletavel(gerar_random_x(), gerar_random_y(), 10, 10, 'bola') for _ in range(1)]
@@ -83,14 +85,14 @@ def main():
             tela.blit(imagem_fundo, (0, 0))
 
             texto_vidas = fonte_pequena.render(f'Vidas restantes: {vidas}', True, 'white')
-            texto_nivel = fonte_pequena.render(f'Nível: {nivel}', True, 'white')
+            texto_nivel = fonte_pequena.render(f'Nivel: {nivel}', True, 'white')
             texto_bolas = fonte_pequena.render(f'Bolas restantes: {bolas_restantes}', True, 'white')
             texto_convites = fonte_pequena.render(f'Convites aceitos: {convites_aceitos}', True, 'white')
 
-            tela.blit(texto_vidas, (33, 10))
-            tela.blit(texto_nivel, (33, 40))
-            tela.blit(texto_bolas, (743,10))
-            tela.blit(texto_convites, (743, 40))
+            tela.blit(texto_vidas, (33, 16))
+            tela.blit(texto_nivel, (33, 48))
+            tela.blit(texto_bolas, (653,16))
+            tela.blit(texto_convites, (653, 48))
 
             teclas = pygame.key.get_pressed()
             jogador.mover(teclas)
