@@ -18,7 +18,22 @@ FPS = 100
 
 VELOCIDADE = 1.5
 
-MAX_NIVEIS = 10
+MAX_NIVEIS = 5
 
 ALTURA_JOGADOR = 48
 LARGURA_JOGADOR = 30
+
+CONVITES = [
+    'jantar com a rainha da Dinamarca',
+    'jogar uma pelada com o Dalai Lama',
+    'jogar de xadrez com o Papa',
+    'passear de foguete com o Elon Musk',
+    'assistir aula de teórica com Ruy',
+    'ser monitor de IP no CIn',
+    'ser garoto propaganda de Marcelinho',
+    'disputar a OPEI',
+    'competir no RoboCIn',
+    'participar do Citi',
+    'almoçar no RU',
+    'pegar barro macaxeira lotado',
+]

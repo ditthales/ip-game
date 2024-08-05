@@ -1,5 +1,5 @@
 import random
-from constantes import LARGURA_TELA, ALTURA_TELA
+from constantes import LARGURA_TELA, ALTURA_TELA, CONVITES
 
 def gerar_pontos_movimento():
     pontos = []
@@ -20,3 +20,30 @@ def gerar_drop():
         return 'bola'
     else:
         return 'convite'
+    
+def gerar_roles(n):
+
+     return random.sample(CONVITES, n)
+
+def gerar_frase_final(n):
+
+    if n == 0:
+
+        frase_base = 'Você finalizou todos os níveis, mas não conseguiu\naceitar nenhum convite para rolê.\nQue pena!'
+
+    else:
+        roles_aleatorios = gerar_roles(n)
+
+        frase_base = f'Você finalizou todos os níveis e coletou {n} convites.\n\nVocê aceitou:'
+
+        for role in roles_aleatorios:
+            frase_base += f'\n- {role}'
+    
+    return frase_base
+
+def render_multiline_text(text, font, color):
+    lines = text.split('\n')
+    rendered_lines = []
+    for line in lines:
+        rendered_lines.append(font.render(line, True, color))
+    return rendered_lines
