@@ -41,7 +41,7 @@ Relatório de desenvolvimento do jogo Ronaldinho Soccer feito para a disciplina 
 <a id="ideacao"></a>
 ## Ideação e design
 
-O processo de ideação e design em grupo para o nosso projeto de jogo teve início com um brainstorm escrito no (whimsical)[https://whimsical.com/projeto-ip-brainstoming-23fNbDga6oa6N2Xy1pBtRL] seguido por uma votação baseada em critérios pré-definidos. O tema mais votado foi eleito como nossa ideia de jogo. Abaixo, descreveremos em detalhes as etapas desse processo.
+O processo de ideação e design em grupo para o nosso projeto de jogo teve início com um brainstorm escrito no [whimsical](https://whimsical.com/projeto-ip-brainstoming-23fNbDga6oa6N2Xy1pBtRL) seguido por uma votação baseada em critérios pré-definidos. O tema mais votado foi eleito como nossa ideia de jogo. Abaixo, descreveremos em detalhes as etapas desse processo.
 
 <strong>1. Brainwriting Colaborativo</strong>
 
