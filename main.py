@@ -7,6 +7,7 @@ from adversario import Adversario
 from bola import Bola
 from gol import Gol
 from coletavel import Coletavel
+from audio import torcida, kick_sound
 
 # Inicializa o pygame
 pygame.init()
