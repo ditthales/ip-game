@@ -30,7 +30,7 @@ def gerar_frase_final(n):
 
     if n == 0:
 
-        frase_base = 'Voce finalizou todos os niveis,\nmas não conseguiu aceitar\nnenhum convite para role.\nQue pena!'
+        frase_base = 'Voce finalizou todos os niveis,\nmas nao conseguiu aceitar\nnenhum convite para role.\nQue pena!'
 
     else:
         roles_aleatorios = gerar_roles(n)

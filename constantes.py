@@ -18,7 +18,7 @@ FPS = 100
 
 VELOCIDADE = 1.5
 
-MAX_NIVEIS = 5
+MAX_NIVEIS = 2
 
 ALTURA_JOGADOR = 48
 LARGURA_JOGADOR = 30
@@ -34,6 +34,6 @@ CONVITES = [
     'disputar a OPEI',
     'competir no RoboCIn',
     'participar do Citi',
-    'almoçar no RU',
+    'almocar no RU',
     'pegar barro macaxeira lotado',
 ]

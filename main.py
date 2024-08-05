@@ -42,6 +42,7 @@ def tela_menu():
                     if (botao_pos_x <= mouse_pos[0] <= botao_pos_x + botao_largura and
                         botao_pos_y <= mouse_pos[1] <= botao_pos_y + botao_altura):
                         rodando = False  # Sai do loop e inicia o jogo
+                        esperar_pelo_proximo_evento()
 
         tela.blit(imagem_fundo, (0, 0))
         pygame.draw.rect(tela, (183, 35, 35), (botao_pos_x, botao_pos_y, botao_largura, botao_altura))
@@ -49,13 +50,13 @@ def tela_menu():
         pygame.display.flip()
         relogio.tick(FPS)
     
-    esperar_pelo_proximo_evento()
+    main()
 
 def main():
     tela = pygame.display.set_mode((LARGURA_TELA, ALTURA_TELA))
     pygame.display.set_caption('Jogo de Futebol')
 
-    imagem_fundo = pygame.image.load('./campinho.png')
+    imagem_fundo = pygame.image.load('./assetsgeral/campinho.png')
     imagem_fundo = pygame.transform.scale(imagem_fundo, (LARGURA_TELA, ALTURA_TELA))
 
     relogio = pygame.time.Clock()
@@ -71,7 +72,7 @@ def main():
     convites_aceitos = 0
 
     fonte_pequena = pygame.font.Font(font_path, 16)
-    fonte_grande = pygame.font.Font(font_path, 32)
+    fonte_grande = pygame.font.Font(font_path, 22)
 
     adversarios = [Adversario(gerar_pontos_movimento(), circular=(i % 2 == 1)) for i in range(nivel + 3)]
     bolas_a_coletar = [Coletavel(gerar_random_x(), gerar_random_y(), 10, 10, 'bola') for _ in range(1)]
@@ -83,7 +84,7 @@ def main():
                 pygame.quit()
                 quit()
 
-        if nivel <= MAX_NIVEIS:
+        if nivel <= MAX_NIVEIS and vidas > 0:
             tela.blit(imagem_fundo, (0, 0))
 
             texto_vidas = fonte_pequena.render(f'Vidas restantes: {vidas}', True, 'white')
@@ -151,6 +152,7 @@ def main():
 
                         if nivel > MAX_NIVEIS:
                             print("Você venceu todos os níveis! Fim de jogo.")
+                            imagem_fundo = pygame.image.load('./assetsgeral/voce-venceu.png')
                             tela.fill((0, 255, 0))
                             tela.blit(imagem_fundo, (0, 0))
 
@@ -184,18 +186,24 @@ def main():
                     convites_a_aceitar.remove(convite_a_aceitar)
 
 
-            if vidas == 0:
-                print("Você perdeu todas as vidas! Fim de jogo.")
-                pygame.quit()
-                quit()
-
             jogador.desenhar(tela)
+
+            if vidas == 0:
+                imagem_fundo = pygame.image.load('./assetsgeral/game-over.png')
+                tela.fill((0, 255, 0))
+                tela.blit(imagem_fundo, (0, 0))
+
+            
+        if pygame.mouse.get_pressed()[0] and (vidas == 0 or nivel > MAX_NIVEIS):
+
+            tela_menu()
+            esperar_pelo_proximo_evento()
 
         # pygame.display.flip()
         pygame.display.update()
         relogio.tick(FPS)
 
 if __name__ == '__main__':
+
     tela_menu()
-    main()
     
