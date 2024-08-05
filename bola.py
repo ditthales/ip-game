@@ -8,7 +8,7 @@ class Bola:
         self.y = y
         self.xm = mouse_pos[0]
         self.ym = mouse_pos[1]
-        self.velocidade = 30
+        self.velocidade = 15
         self.angulo = math.atan2(self.y - self.ym, self.x - self.xm)
         self.x_pos = math.cos(self.angulo) * self.velocidade
         self.y_pos = math.sin(self.angulo) * self.velocidade

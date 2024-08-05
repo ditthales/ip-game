@@ -27,12 +27,12 @@ def main():
     gol_marcado = False
 
     vidas = 3
-    bolas_restantes = 3
+    bolas_restantes = 2
     convites_aceitos = 0
 
     adversarios = [Adversario(gerar_pontos_movimento(), circular=(i % 2 == 1)) for i in range(nivel + 1)]
-    bolas_a_coletar = [Coletavel(gerar_random_x(), gerar_random_y(), 10, 10, 'bola') for _ in range(3)]
-    convites_a_aceitar = [Coletavel(gerar_random_x(), gerar_random_y(), 10, 10, 'convite') for _ in range(3)]
+    bolas_a_coletar = [Coletavel(gerar_random_x(), gerar_random_y(), 10, 10, 'bola') for _ in range(1)]
+    convites_a_aceitar = [Coletavel(gerar_random_x(), gerar_random_y(), 10, 10, 'convite') for _ in range(2)]
 
     while True:
         for evento in pygame.event.get():
@@ -55,13 +55,13 @@ def main():
         teclas = pygame.key.get_pressed()
         jogador.mover(teclas)
 
-        if pygame.mouse.get_pressed()[0] and len(bolas) == 0:
+        if pygame.mouse.get_pressed()[0] and len(bolas) == 0 and bolas_restantes > 0:
             
             mouse_pos = pygame.mouse.get_pos()
 
             bolas.append(Bola(jogador.rect.x, jogador.rect.y, mouse_pos))
 
-            # bolas_restantes -= 1
+            bolas_restantes -= 1
         
         for adversario in adversarios:
             adversario.atualizar()
@@ -122,11 +122,6 @@ def main():
 
         if vidas == 0:
             print("Você perdeu todas as vidas! Fim de jogo.")
-            pygame.quit()
-            quit()
-
-        if bolas_restantes == 0:
-            print("Você perdeu todas as bolas! Fim de jogo.")
             pygame.quit()
             quit()
 

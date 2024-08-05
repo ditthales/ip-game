@@ -1,15 +1,15 @@
 import pygame
-from constantes import direcoes_movimento, LARGURA_TELA, ALTURA_TELA
+from constantes import *
 
 class Jogador:
     def __init__(self):
-        self.rect = pygame.Rect(450, 450, 50, 30)
+        self.rect = pygame.Rect(450, 450, LARGURA_JOGADOR, ALTURA_JOGADOR)
         self.velocidade = 2
 
         self.imagem_direita = pygame.image.load('./playerassets/jogador_direita.png')
-        self.imagem_direita = pygame.transform.scale(self.imagem_direita, (30, 48))
+        self.imagem_direita = pygame.transform.scale(self.imagem_direita, (LARGURA_JOGADOR, ALTURA_JOGADOR))
         self.imagem_esquerda = pygame.image.load('./playerassets/jogador_esquerda.png')
-        self.imagem_esquerda = pygame.transform.scale(self.imagem_esquerda, (30, 48))
+        self.imagem_esquerda = pygame.transform.scale(self.imagem_esquerda, (LARGURA_JOGADOR, ALTURA_JOGADOR))
         self.imagem_atual = self.imagem_direita
 
     def mover(self, teclas):
@@ -28,12 +28,12 @@ class Jogador:
         
         if self.rect.x < 0:
             self.rect.x = 0
-        elif self.rect.x > LARGURA_TELA - 30:
-            self.rect.x = LARGURA_TELA - 30
+        elif self.rect.x > LARGURA_TELA - LARGURA_JOGADOR:
+            self.rect.x = LARGURA_TELA - LARGURA_JOGADOR
         if self.rect.y < 0:
             self.rect.y = 0
-        elif self.rect.y > ALTURA_TELA - 48:
-            self.rect.y = ALTURA_TELA - 48
+        elif self.rect.y > ALTURA_TELA - ALTURA_JOGADOR:
+            self.rect.y = ALTURA_TELA - ALTURA_JOGADOR
 
     # def desenhar(self, tela):
     #     pygame.draw.rect(tela, 'blue', self.rect)
