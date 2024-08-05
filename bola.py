@@ -8,7 +8,7 @@ class Bola:
         self.y = y
         self.xm = mouse_pos[0]
         self.ym = mouse_pos[1]
-        self.velocidade = 15
+        self.velocidade = 30
         self.angulo = math.atan2(self.y - self.ym, self.x - self.xm)
         self.x_pos = math.cos(self.angulo) * self.velocidade
         self.y_pos = math.sin(self.angulo) * self.velocidade
@@ -29,7 +29,7 @@ class Bola:
         self.x -= self.x_pos
         self.y -= self.y_pos
         self.truepos = (self.x, self.y)
-        tela.blit(pygame.transform.scale(pygame.image.load('./playerassets/ball.png'),(10,10)), (self.x, self.y))
+        tela.blit(pygame.transform.scale(pygame.image.load('./coletaveisassets/ball.png'),(10,10)), (self.x, self.y))
         
     def saiu_tela(self):
         return self.y < 0 or self.y > ALTURA_TELA or self.x < 0 or self.x > LARGURA_TELA

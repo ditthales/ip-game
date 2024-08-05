@@ -4,7 +4,7 @@ from constantes import direcoes_movimento
 class Jogador:
     def __init__(self):
         self.rect = pygame.Rect(450, 630, 50, 30)
-        self.velocidade = 2
+        self.velocidade = 4
 
     def mover(self, teclas):
         deslocamento = (0, 0)
