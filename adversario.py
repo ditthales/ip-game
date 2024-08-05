@@ -11,6 +11,12 @@ class Adversario:
         self.angulo = 0
         self.raio = 100
 
+        self.imagem_direita = pygame.image.load('./playerassets/adversario-direita.png')
+        self.imagem_direita = pygame.transform.scale(self.imagem_direita, (30, 48))
+        self.imagem_esquerda = pygame.image.load('./playerassets/adversario-esquerda.png')
+        self.imagem_esquerda = pygame.transform.scale(self.imagem_esquerda, (30, 48))
+        self.imagem_atual = self.imagem_direita
+
     def atualizar(self):
         if self.circular:
             centro_x, centro_y = self.pontos_movimento[0]
@@ -33,4 +39,4 @@ class Adversario:
                 self.index_ponto = (self.index_ponto + 1) % len(self.pontos_movimento)
 
     def desenhar(self, tela):
-        pygame.draw.rect(tela, 'red', self.rect)
+        tela.blit(self.imagem_atual, (self.rect.x, self.rect.y))

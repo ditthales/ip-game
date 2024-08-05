@@ -47,14 +47,14 @@ def main():
             tela.blit(imagem_fundo, (0, 0))
 
             texto_vidas = fonte_pequena.render(f'Vidas restantes: {vidas}', True, 'white')
-            texto_bolas = fonte_pequena.render(f'Bolas restantes: {bolas_restantes}', True, 'white')
             texto_nivel = fonte_pequena.render(f'Nível: {nivel}', True, 'white')
+            texto_bolas = fonte_pequena.render(f'Bolas restantes: {bolas_restantes}', True, 'white')
             texto_convites = fonte_pequena.render(f'Convites aceitos: {convites_aceitos}', True, 'white')
 
             tela.blit(texto_vidas, (33, 10))
-            tela.blit(texto_bolas, (33,70))
             tela.blit(texto_nivel, (33, 40))
-            tela.blit(texto_convites, (33, 100))
+            tela.blit(texto_bolas, (743,10))
+            tela.blit(texto_convites, (743, 40))
 
             teclas = pygame.key.get_pressed()
             jogador.mover(teclas)

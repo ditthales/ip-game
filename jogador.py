@@ -6,9 +6,9 @@ class Jogador:
         self.rect = pygame.Rect(450, 450, LARGURA_JOGADOR, ALTURA_JOGADOR)
         self.velocidade = 2
 
-        self.imagem_direita = pygame.image.load('./playerassets/jogador_direita.png')
+        self.imagem_direita = pygame.image.load('./playerassets/jogador-direita.png')
         self.imagem_direita = pygame.transform.scale(self.imagem_direita, (LARGURA_JOGADOR, ALTURA_JOGADOR))
-        self.imagem_esquerda = pygame.image.load('./playerassets/jogador_esquerda.png')
+        self.imagem_esquerda = pygame.image.load('./playerassets/jogador-esquerda.png')
         self.imagem_esquerda = pygame.transform.scale(self.imagem_esquerda, (LARGURA_JOGADOR, ALTURA_JOGADOR))
         self.imagem_atual = self.imagem_direita
 

@@ -1,6 +1,5 @@
 import pygame
 
-
 class Coletavel:
     def __init__(self, x, y, largura, altura, type):
         self.x = x
@@ -8,18 +7,17 @@ class Coletavel:
         self.largura = largura
         self.altura = altura
         self.type = type
+
         if type == 'bola':
-            self.image = './coletaveisassets/ball.png'
-            self.color = 'yellow'
+            self.image = pygame.image.load('./playerassets/bola.png')
         else:
-            self.image = './coletaveisassets/heart.png'
-            self.color = 'aquamarine'
+            self.image = pygame.image.load('./coletaveisassets/convite.png')
+
+        self.image = pygame.transform.scale(self.image, (18, 18))
 
 
     def desenhar(self, tela):
-        rect = self.rect()
-        pygame.draw.rect(tela, self.color, rect)
-
+        tela.blit(self.image, (self.x, self.y))
 
     def rect(self):
         surface_coletavel = pygame.Surface((self.largura, self.altura))
