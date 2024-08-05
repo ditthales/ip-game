@@ -7,7 +7,7 @@ from adversario import Adversario
 from bola import Bola
 from gol import Gol
 from coletavel import Coletavel
-from audio import kick_sound
+from audio import kick_sound, whistle_sound
 
 # Inicializa o pygame
 pygame.init()
@@ -88,12 +88,14 @@ def main():
                 if bola.saiu_tela() and not gol_marcado:
                     bolas.remove(bola)
                     print("chutou pra fora")
+                    whistle_sound.play()
                 else:
                     for adversario in adversarios[:]:
                         
                         if bola.checar_se_bateu(bola_rect, adversario.rect):
                             bolas.remove(bola)
                             print("atingiu o adversário")
+                            whistle_sound.play()
 
                     if bola.checar_se_bateu(bola_rect, gol.rect):
                         gol_marcado = True
@@ -132,6 +134,7 @@ def main():
                     vidas -= 1
                     adversarios.remove(adversario)
                     adversarios.append(Adversario(gerar_pontos_movimento(), circular=adversario.circular))
+                    whistle_sound.play()
 
             for bola_a_coletar in bolas_a_coletar:
                 if jogador.rect.colliderect(bola_a_coletar.rect()):
