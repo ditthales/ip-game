@@ -66,6 +66,8 @@ def main():
                 bolas.append(Bola(jogador.rect.x, jogador.rect.y, mouse_pos))
 
                 bolas_restantes -= 1
+
+                kick_sound.play()
             
             for adversario in adversarios:
                 adversario.atualizar()
