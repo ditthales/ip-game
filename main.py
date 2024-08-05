@@ -7,6 +7,7 @@ from adversario import Adversario
 from bola import Bola
 from gol import Gol
 from coletavel import Coletavel
+from audio import kick_sound
 
 # Inicializa o pygame
 pygame.init()
@@ -66,6 +67,8 @@ def main():
                 bolas.append(Bola(jogador.rect.x, jogador.rect.y, mouse_pos))
 
                 bolas_restantes -= 1
+
+                kick_sound.play()
             
             for adversario in adversarios:
                 adversario.atualizar()
