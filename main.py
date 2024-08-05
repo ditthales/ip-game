@@ -9,8 +9,47 @@ from gol import Gol
 from coletavel import Coletavel
 from audio import kick_sound, whistle_sound
 
-# Inicializa o pygame
 pygame.init()
+
+font_path = 'fontes/slkscre.ttf'
+
+def tela_menu():
+    tela = pygame.display.set_mode((LARGURA_TELA, ALTURA_TELA))
+    pygame.display.set_caption('Tela Inicial do Jogo')
+
+    imagem_fundo = pygame.image.load('./tela-inicial.png')
+    imagem_fundo = pygame.transform.scale(imagem_fundo, (LARGURA_TELA, ALTURA_TELA))
+
+    fonte = pygame.font.Font(font_path, 40)
+    texto_botao = fonte.render("JOGAR", True, (255, 255, 255))
+    botao_largura = 240
+    botao_altura = 80
+    botao_pos_x = 540
+    botao_pos_y = 380
+    texto_botao_rect = texto_botao.get_rect(center=(botao_pos_x + botao_largura // 2, botao_pos_y + botao_altura // 2))
+
+    relogio = pygame.time.Clock()
+    rodando = True
+
+    while rodando:
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            elif evento.type == pygame.MOUSEBUTTONDOWN:
+                if evento.button == 1:  # Clique com o botão esquerdo
+                    mouse_pos = pygame.mouse.get_pos()
+                    if (botao_pos_x <= mouse_pos[0] <= botao_pos_x + botao_largura and
+                        botao_pos_y <= mouse_pos[1] <= botao_pos_y + botao_altura):
+                        rodando = False  # Sai do loop e inicia o jogo
+
+        tela.blit(imagem_fundo, (0, 0))
+        pygame.draw.rect(tela, (183, 35, 35), (botao_pos_x, botao_pos_y, botao_largura, botao_altura))
+        tela.blit(texto_botao, texto_botao_rect)
+        pygame.display.flip()
+        relogio.tick(FPS)
+    
+    esperar_pelo_proximo_evento()
 
 def main():
     tela = pygame.display.set_mode((LARGURA_TELA, ALTURA_TELA))
@@ -31,8 +70,8 @@ def main():
     bolas_restantes = 2
     convites_aceitos = 0
 
-    fonte_pequena = pygame.font.SysFont('arial', 16)
-    fonte_grande = pygame.font.SysFont('arial', 32)
+    fonte_pequena = pygame.font.Font(font_path, 16)
+    fonte_grande = pygame.font.Font(font_path, 32)
 
     adversarios = [Adversario(gerar_pontos_movimento(), circular=(i % 2 == 1)) for i in range(nivel + 3)]
     bolas_a_coletar = [Coletavel(gerar_random_x(), gerar_random_y(), 10, 10, 'bola') for _ in range(1)]
@@ -48,14 +87,14 @@ def main():
             tela.blit(imagem_fundo, (0, 0))
 
             texto_vidas = fonte_pequena.render(f'Vidas restantes: {vidas}', True, 'white')
-            texto_nivel = fonte_pequena.render(f'Nível: {nivel}', True, 'white')
+            texto_nivel = fonte_pequena.render(f'Nivel: {nivel}', True, 'white')
             texto_bolas = fonte_pequena.render(f'Bolas restantes: {bolas_restantes}', True, 'white')
             texto_convites = fonte_pequena.render(f'Convites aceitos: {convites_aceitos}', True, 'white')
 
-            tela.blit(texto_vidas, (33, 10))
-            tela.blit(texto_nivel, (33, 40))
-            tela.blit(texto_bolas, (743,10))
-            tela.blit(texto_convites, (743, 40))
+            tela.blit(texto_vidas, (33, 16))
+            tela.blit(texto_nivel, (33, 48))
+            tela.blit(texto_bolas, (653,16))
+            tela.blit(texto_convites, (653, 48))
 
             teclas = pygame.key.get_pressed()
             jogador.mover(teclas)
@@ -125,8 +164,6 @@ def main():
                                 tela.blit(rendered_line, line_rect.topleft)
                                 y_offset += fonte_grande.get_linesize()
 
-                            
-
                         jogador = Jogador()
 
             for adversario in adversarios:
@@ -158,7 +195,7 @@ def main():
         pygame.display.update()
         relogio.tick(FPS)
 
-        
-
 if __name__ == '__main__':
+    tela_menu()
     main()
+    
