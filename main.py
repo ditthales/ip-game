@@ -72,7 +72,7 @@ def main():
                     bolas = []
                     gol_marcado = False
                     jogador = Jogador()
-                    gol.rect.topleft = (400, 0)
+                    gol = Gol()
 
         for adversario in adversarios:
             if jogador.rect.colliderect(adversario.rect):
