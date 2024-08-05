@@ -1,5 +1,6 @@
 import random
 from constantes import LARGURA_TELA, ALTURA_TELA, CONVITES
+import pygame
 
 def gerar_pontos_movimento():
     pontos = []
@@ -29,12 +30,12 @@ def gerar_frase_final(n):
 
     if n == 0:
 
-        frase_base = 'Você finalizou todos os níveis, mas não conseguiu\naceitar nenhum convite para rolê.\nQue pena!'
+        frase_base = 'Você finalizou todos os níveis,\nmas não conseguiu aceitar\nnenhum convite para rolê.\nQue pena!'
 
     else:
         roles_aleatorios = gerar_roles(n)
 
-        frase_base = f'Você finalizou todos os níveis e coletou {n} convites.\n\nVocê aceitou:'
+        frase_base = f'Você finalizou todos os níveis\ne coletou {n} convites.\n\nVocê aceitou:'
 
         for role in roles_aleatorios:
             frase_base += f'\n- {role}'
@@ -47,3 +48,12 @@ def render_multiline_text(text, font, color):
     for line in lines:
         rendered_lines.append(font.render(line, True, color))
     return rendered_lines
+
+
+def esperar_pelo_proximo_evento():
+    # Espera até que um evento de mouse seja registrado
+    evento = None
+    while not evento:
+        evento = pygame.event.wait()
+        if evento.type == pygame.MOUSEBUTTONDOWN:
+            break

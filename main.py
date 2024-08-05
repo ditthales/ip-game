@@ -48,6 +48,8 @@ def tela_menu():
         tela.blit(texto_botao, texto_botao_rect)
         pygame.display.flip()
         relogio.tick(FPS)
+    
+    esperar_pelo_proximo_evento()
 
 def main():
     tela = pygame.display.set_mode((LARGURA_TELA, ALTURA_TELA))
