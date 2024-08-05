@@ -3,7 +3,7 @@ import math
 
 class Adversario:
     def __init__(self, pontos_movimento, circular=False):
-        self.rect = pygame.Rect(pontos_movimento[0][0], pontos_movimento[0][1], 40, 30)
+        self.rect = pygame.Rect(pontos_movimento[0][0], pontos_movimento[0][1], 30, 48)
         self.velocidade = 2  # Velocidade aumentada
         self.pontos_movimento = pontos_movimento
         self.index_ponto = 0
