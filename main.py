@@ -71,7 +71,7 @@ def main():
                     adversarios = [Adversario(gerar_pontos_movimento(), circular=(i % 2 == 1)) for i in range(nivel + 1)]
                     bolas = []
                     gol_marcado = False
-                    jogador.rect.topleft = (450, 630)
+                    jogador = Jogador()
                     gol.rect.topleft = (400, 0)
 
         for adversario in adversarios:

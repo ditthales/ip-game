@@ -1,9 +1,9 @@
 import pygame
-from constantes import direcoes_movimento
+from constantes import direcoes_movimento, LARGURA_TELA, ALTURA_TELA
 
 class Jogador:
     def __init__(self):
-        self.rect = pygame.Rect(450, 630, 50, 30)
+        self.rect = pygame.Rect(450, 450, 50, 30)
         self.velocidade = 2
 
         self.imagem_direita = pygame.image.load('./playerassets/jogador_direita.png')
@@ -28,12 +28,12 @@ class Jogador:
         
         if self.rect.x < 0:
             self.rect.x = 0
-        elif self.rect.x > 950:
-            self.rect.x = 950
+        elif self.rect.x > LARGURA_TELA - 30:
+            self.rect.x = LARGURA_TELA - 30
         if self.rect.y < 0:
             self.rect.y = 0
-        elif self.rect.y > 670:
-            self.rect.y = 670
+        elif self.rect.y > ALTURA_TELA - 48:
+            self.rect.y = ALTURA_TELA - 48
 
     # def desenhar(self, tela):
     #     pygame.draw.rect(tela, 'blue', self.rect)
