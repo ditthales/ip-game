@@ -28,7 +28,7 @@ CONVITES = [
     'jogar uma pelada com o Dalai Lama',
     'jogar de xadrez com o Papa',
     'passear de foguete com o Elon Musk',
-    'assistir aula de teórica com Ruy',
+    'assistir aula de teorica com Ruy',
     'ser monitor de IP no CIn',
     'ser garoto propaganda de Marcelinho',
     'disputar a OPEI',
