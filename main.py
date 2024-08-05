@@ -6,26 +6,16 @@ from jogador import Jogador
 from adversario import Adversario
 from bola import Bola
 from gol import Gol
-from mapa import *
 
 # Inicializa o pygame
 pygame.init()
-
-# Seta a tela
-# screen_size = (928, 576)
-# tela = pygame.display.set_mode(screen_size)
-
-mapa = Mapa()
-mapa.criar_mapa(mundo)
 
 def main():
     tela = pygame.display.set_mode((LARGURA_TELA, ALTURA_TELA))
     pygame.display.set_caption('Jogo de Futebol')
 
-    fundo = pygame.Surface((LARGURA_TELA, ALTURA_TELA))
-    fundo = fundo.convert()
-    fundo.fill('green')
-    scroll_fundo = ALTURA_TELA * 1.5
+    imagem_fundo = pygame.image.load('./campinho.png')
+    imagem_fundo = pygame.transform.scale(imagem_fundo, (LARGURA_TELA, ALTURA_TELA))
 
     relogio = pygame.time.Clock()
 
@@ -43,10 +33,7 @@ def main():
                 pygame.quit()
                 quit()
 
-        tela.blit(fundo, (0, 0))
-        scroll_fundo -= VELOCIDADE
-        if scroll_fundo <= -ALTURA_TELA:
-            scroll_fundo = ALTURA_TELA * 1.5
+        tela.blit(imagem_fundo, (0, 0))
 
         teclas = pygame.key.get_pressed()
         jogador.mover(teclas)

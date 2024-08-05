@@ -1,11 +1,15 @@
 import pygame
 from bloco import Bloco
 
-mundo = [[]]
+mundo = []
+rows, cols = 10,10
 
-for x in range(10):
-  for y in range(10):
-    mundo[x][y] = 'G'
+for x in range(rows):
+    col = []
+    for y in range(cols):
+        col.append('L')
+
+    mundo.append(col)
 
 class Mapa:
     def __init__(self):
@@ -17,6 +21,7 @@ class Mapa:
         self.offset = pygame.math.Vector2()
 
     def criar_mapa(self, mundo):
+        print(mundo)
         for t_linha in enumerate(mundo):
             l_index = t_linha[0]
             for t_bloco in enumerate(t_linha[1]):
@@ -38,15 +43,13 @@ class Mapa:
                     surface_block = pygame.Surface((8,8))
                     rect_surface = surface_block.get_rect(topleft = (x,y))
                     self.rect_colidiveis.append(rect_surface)
-    def desenhar(self, off_coords):
-        self.rect_colidiveis = []
-        self.offset.x = off_coords[0]
-        self.offset.y = off_coords[1]
+
+    def desenhar(self):
+        self.tela.fill((0, 0, 0)) 
         for sprite in self.sprites_visiveis:
-            nova_pos = sprite.rect.topleft + self.offset
+            nova_pos = sprite.rect.topleft
             self.tela.blit(sprite.image, nova_pos)
         for sprite in self.obstaculos:
-            nova_pos = sprite.rect_inicial.topleft + self.offset
-            sprite.rect.topleft = nova_pos
-            self.rect_colidiveis.append(sprite.rect)
+            nova_pos = sprite.rect.topleft
             self.tela.blit(sprite.image, nova_pos)
+        
