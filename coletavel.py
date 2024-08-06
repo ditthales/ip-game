@@ -15,7 +15,6 @@ class Coletavel:
 
         self.image = pygame.transform.scale(self.image, (18, 18))
 
-
     def desenhar(self, tela):
         tela.blit(self.image, (self.x, self.y))
 
