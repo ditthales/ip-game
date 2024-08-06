@@ -35,8 +35,5 @@ class Jogador:
         elif self.rect.y > ALTURA_TELA - ALTURA_JOGADOR:
             self.rect.y = ALTURA_TELA - ALTURA_JOGADOR
 
-    # def desenhar(self, tela):
-    #     pygame.draw.rect(tela, 'blue', self.rect)
-
     def desenhar(self, tela):
         tela.blit(self.imagem_atual, (self.rect.x, self.rect.y))

@@ -17,7 +17,7 @@ def tela_menu():
     tela = pygame.display.set_mode((LARGURA_TELA, ALTURA_TELA))
     pygame.display.set_caption('Tela Inicial do Jogo')
 
-    imagem_fundo = pygame.image.load('./tela-inicial.png')
+    imagem_fundo = pygame.image.load('./assetsgeral/tela-inicial.png')
     imagem_fundo = pygame.transform.scale(imagem_fundo, (LARGURA_TELA, ALTURA_TELA))
 
     fonte = pygame.font.Font(font_path, 40)
@@ -67,7 +67,7 @@ def main():
     bolas = []
     gol_marcado = False
 
-    vidas = 3
+    cartoes = 0
     bolas_restantes = 2
     convites_aceitos = 0
 
@@ -84,18 +84,18 @@ def main():
                 pygame.quit()
                 quit()
 
-        if nivel <= MAX_NIVEIS and vidas > 0:
+        if nivel <= MAX_NIVEIS and cartoes <= 3:
             tela.blit(imagem_fundo, (0, 0))
 
-            texto_vidas = fonte_pequena.render(f'Vidas restantes: {vidas}', True, 'white')
+            texto_cartoes = fonte_pequena.render(f'Cartoes: {cartoes}', True, 'white')
             texto_nivel = fonte_pequena.render(f'Nivel: {nivel}', True, 'white')
-            texto_bolas = fonte_pequena.render(f'Bolas restantes: {bolas_restantes}', True, 'white')
-            texto_convites = fonte_pequena.render(f'Convites aceitos: {convites_aceitos}', True, 'white')
+            texto_bolas = fonte_pequena.render(f'Bolas: {bolas_restantes}', True, 'white')
+            texto_convites = fonte_pequena.render(f'Convites: {convites_aceitos}', True, 'white')
 
-            tela.blit(texto_vidas, (33, 16))
-            tela.blit(texto_nivel, (33, 48))
-            tela.blit(texto_bolas, (653,16))
-            tela.blit(texto_convites, (653, 48))
+            tela.blit(texto_cartoes, (112, 16))
+            tela.blit(texto_nivel, (112, 48))
+            tela.blit(texto_bolas, (736,16))
+            tela.blit(texto_convites, (736, 48))
 
             teclas = pygame.key.get_pressed()
             jogador.mover(teclas)
@@ -139,19 +139,19 @@ def main():
 
                     if bola.checar_se_bateu(bola_rect, gol.rect):
                         gol_marcado = True
-                        print(f"Gol! Nível {nivel} completado.")
+                        print(f"Gol! Nivel {nivel} completado.")
                         nivel += 1
 
                         adversarios = [Adversario(gerar_pontos_movimento(), circular=(i % 2 == 1)) for i in range(nivel + 3)]
                         bolas_a_coletar = [Coletavel(gerar_random_x(), gerar_random_y(), 10, 10, 'bola') for _ in range(2)]
                         convites_a_aceitar = [Coletavel(gerar_random_x(), gerar_random_y(), 10, 10, 'convite') for _ in range(2)]
                         bolas = []
-                        vidas = 3
+                        cartoes = 0
                         gol_marcado = False
                         gol = Gol()
 
                         if nivel > MAX_NIVEIS:
-                            print("Você venceu todos os níveis! Fim de jogo.")
+                            print("Voce venceu todos os niveis! Fim de jogo.")
                             imagem_fundo = pygame.image.load('./assetsgeral/voce-venceu.png')
                             tela.fill((0, 255, 0))
                             tela.blit(imagem_fundo, (0, 0))
@@ -170,7 +170,7 @@ def main():
 
             for adversario in adversarios:
                 if jogador.rect.colliderect(adversario.rect):
-                    vidas -= 1
+                    cartoes += 1
                     adversarios.remove(adversario)
                     adversarios.append(Adversario(gerar_pontos_movimento(), circular=adversario.circular))
                     whistle_sound.play()
@@ -188,13 +188,13 @@ def main():
 
             jogador.desenhar(tela)
 
-            if vidas == 0:
+            if cartoes == 3:
                 imagem_fundo = pygame.image.load('./assetsgeral/game-over.png')
                 tela.fill((0, 255, 0))
                 tela.blit(imagem_fundo, (0, 0))
 
             
-        if pygame.mouse.get_pressed()[0] and (vidas == 0 or nivel > MAX_NIVEIS):
+        if pygame.mouse.get_pressed()[0] and (cartoes == 3 or nivel > MAX_NIVEIS):
 
             tela_menu()
             esperar_pelo_proximo_evento()
@@ -204,6 +204,5 @@ def main():
         relogio.tick(FPS)
 
 if __name__ == '__main__':
-
     tela_menu()
     
