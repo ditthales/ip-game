@@ -116,7 +116,7 @@ Desde o começo esse foi um projeto desafiador por se tratar de um sistema inter
 
 Tela Inicial | Tela de Jogo
 :-------------------------:|:-------------------------:
-<img src="https://i.imgur.com/1P978sw.png" alt="Tela Inicial" height="240"> | <img src="https://i.imgur.com/aRhFCqN.png" alt="Tela de Jogo" height="240"> 
+<img src="https://i.imgur.com/1P978sw.png" alt="Tela Inicial" height="240"> | <img src="https://i.imgur.com/lmz3A5U.png" alt="Tela de Jogo" height="240"> 
 
 Game Over | Tela de Vitória
 :-------------------------:|:-------------------------:
